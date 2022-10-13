@@ -2,6 +2,7 @@ package com.weMovies.service;
 
 import java.util.List;
 
+import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
 
 public interface MovieService {
@@ -16,4 +17,6 @@ public interface MovieService {
     public void mvUpdate(MovieDTO mdto) throws Exception;
     
     public List<MovieDTO> mvUpload(int id) throws Exception;
+    
+    public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception;
 }

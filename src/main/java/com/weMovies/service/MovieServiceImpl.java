@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.weMovies.dao.MovieDAO;
+import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
 
 @Service("movieService")
@@ -42,6 +43,12 @@ public class MovieServiceImpl implements MovieService {
     public List<MovieDTO> mvUpload(int id) throws Exception {
         // TODO Auto-generated method stub
         return mdao.mvUpload(id);
+    }
+
+    @Override
+    public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception {
+        // TODO Auto-generated method stub
+        return mdao.cListUp(cdto);
     }
     
 

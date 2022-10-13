@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
 
 @Repository("movieDAO")
@@ -41,6 +42,12 @@ public class MovieDAOImpl implements MovieDAO{
     public List<MovieDTO> mvUpload(int id) throws Exception {
         // TODO Auto-generated method stub
         return sqlSession.selectList("movie.movieUpload", id);
+    }
+
+    @Override
+    public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception {
+        // TODO Auto-generated method stub
+        return sqlSession.selectList("list", cdto);
     }
     
 }
