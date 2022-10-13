@@ -12,6 +12,9 @@
 	<select id="movieList" resultType="MovieDTO">
 		SELECT id, title, poster_path, release_date, overview from wemovies.movieinfo
 	</select>
+	<select id="movieUpload" resultType="MovieDTO">
+		SELECT title, poster_path, release_date, overview, genres, runtime from wemovies.movieinfo where id = #{id}
+	</select>
 	<delete id="delMovie">
 		DELETE FROM wemovies.movieinfo where title = #{title}
 	</delete>

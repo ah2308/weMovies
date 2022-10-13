@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Dashboard</title>
-
+    <title>WE MOVIE: 관리자페이지 - DASHBOARD</title>
     <!-- Custom fonts for this template-->
     <link href="${path}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -19,7 +19,6 @@
 
     <!-- Custom styles for this template-->
     <link href="${path}/resources/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -35,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">WE:MOVIE ADMIN <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -53,7 +52,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                메뉴
             </div>
 
             <!-- Nav Item - Charts -->
@@ -119,11 +118,88 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="api" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> 영화API 업데이트 </a>
+                        <h1 class="h3 mb-0 text-gray-800">영화 상영목록 등록하기</h1>
                     </div>
-
+					<div class="row justify-content-start">
+						<c:forEach items="${list}" var="list">
+							<div class="col-lg-4">
+								<img src="https://image.tmdb.org/t/p/original/${list.poster_path}" style="object-fit:cover; height:650px; width:420px;">
+							</div>
+							<div class="col-lg-6">
+								<form action="upload" method="post">
+									<div class="row mb-3">
+										<div class="col-lg">
+											<label class="form-label">영화 제목 : (TITLE)</label>
+											<input class="form-control" type="text" value="${list.title}         | 상영시간: ${list.runtime}분" aria-label="title" disabled readonly>
+										</div>
+										<div class="col-lg">
+											<label class="form-label">영화 장르 : (GENRES)</label>
+											<input class="form-control" type="text" value="${list.genres}" aria-label="title" disabled readonly>
+										</div>
+									</div>
+									<div class="mb-3">
+										<label class="form-label">영화 소개 : (OVERVIEW)</label>
+										<input class="form-control" type="text" value="${list.overview}" aria-label="title" disabled readonly>
+									</div>
+									<div class="row mb-3">
+										<div class="col-lg">
+											<label class="form-label">영화관 : (CINEMA)</label>
+											<select class="form-control form-select" multiple aria-label="multiple select example">
+  												<option selected>Open this select menu</option>
+  												<option value="1">One</option>
+  												<option value="2">Two</option>
+  												<option value="3">Three</option>
+											</select>
+										</div>
+										<div class="col-lg">
+											<label class="form-label">상영관 : (SCREEN)</label>
+											<select class="form-control form-select" multiple aria-label="multiple select example">
+  												<option value="1">Open this select menu</option>
+  												<option value="2">One</option>
+  												<option value="3">Two</option>
+  												<option value="4">Three</option>
+											</select>
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="col-lg">
+											<label class="form-label">상영 기간 : (PERIOD)</label> 
+											<input type="text" class="form-control" name="demo" id="demo" value="데이트피커 구현하기">
+										</div>
+										<div class="col-lg">
+											<label class="form-label">상영 시간 : (SHOWTIMES)</label>
+											<select class="form-control form-select" aria-label="multiple select example">
+  												<option value="1">Open this select menu</option>
+  												<option value="2">One</option>
+  												<option value="3">Two</option>
+  												<option value="4">Three</option>
+											</select>
+										</div>
+									</div>
+									<div class="row mb-3" style="padding-top: 11rem;">
+										<div class="col-lg text-right">
+											<div class="my-2"></div>
+                                   			<a href="list" class="btn btn-secondary btn-icon-split">
+                                        		<span class="icon text-white-50">
+                                            		<i class="fas fa-arrow-right"></i>
+                                        		</span>
+                                        		<span class="text">돌아가기</span>
+                                    		</a>
+                                    	</div>
+                                    	<div class="col-lg">
+                                    		<div class="my-2"></div>
+                                    		<button type="submit" class="btn btn-success btn-icon-split">
+                                        		<span class="icon text-white-50">
+                                            		<i class="fas fa-check"></i>
+                                        		</span>
+                                        		<span class="text">등록하기</span>
+                                    		</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</c:forEach>
+					</div>
                 </div>
                 <!-- /.container-fluid -->
 

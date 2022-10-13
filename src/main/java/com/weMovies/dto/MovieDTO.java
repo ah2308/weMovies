@@ -31,6 +31,15 @@ public class MovieDTO {
         this.release_date = release_date;
         this.overview = overview;
     }
+    public MovieDTO(int id, String title, String poster_path, String release_date, String overview, String genres, int runtime) {
+        this.id = id;
+        this.title = title;
+        this.poster_path = poster_path;
+        this.release_date = release_date;
+        this.overview = overview;
+        this.genres = genres;
+        this.runtime = runtime;
+    }
     public int getId() {
         return id;
     }
@@ -67,4 +76,17 @@ public class MovieDTO {
     public void setOverview(String overview) {
         this.overview = overview;
     }
+    public String getGenres() {
+        return genres;
+    }
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+    public int getRuntime() {
+        return runtime;
+    }
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
+    }
+    
 }

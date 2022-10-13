@@ -36,5 +36,11 @@ public class MovieDAOImpl implements MovieDAO{
     public void mvUpdate(MovieDTO mdto) throws Exception {
         sqlSession.update("movie.movieDetail", mdto);
     }
+
+    @Override
+    public List<MovieDTO> mvUpload(int id) throws Exception {
+        // TODO Auto-generated method stub
+        return sqlSession.selectList("movie.movieUpload", id);
+    }
     
 }
