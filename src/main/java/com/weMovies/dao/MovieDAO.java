@@ -13,4 +13,6 @@ public interface MovieDAO {
     public void delMovie(String title) throws Exception;
     
     public void mvUpdate(MovieDTO mdto) throws Exception;
+    
+    public List<MovieDTO> mvUpload(int id) throws Exception;
 }

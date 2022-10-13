@@ -37,6 +37,12 @@ public class MovieServiceImpl implements MovieService {
         // TODO Auto-generated method stub
         mdao.mvUpdate(mdto);
     }
+
+    @Override
+    public List<MovieDTO> mvUpload(int id) throws Exception {
+        // TODO Auto-generated method stub
+        return mdao.mvUpload(id);
+    }
     
 
 }
