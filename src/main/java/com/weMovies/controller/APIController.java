@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
 import com.weMovies.service.MovieService;
 
@@ -26,6 +27,7 @@ public class APIController {
     private MovieService movieService;
     
     private MovieDTO movieDTO;
+    private CinemaDTO cdto;
     
     //영화 1차 데이터를 받아옵니다. 40개의 데이터를 가져올 예정.
     @RequestMapping("/movie/api")
@@ -101,6 +103,9 @@ public class APIController {
              */
             List<MovieDTO> list = movieService.mvUpload(id);
             model.addAttribute("list", list);
+            
+            List<CinemaDTO> clist = movieService.cListUp(cdto);
+            model.addAttribute("clist", clist);
         }catch(Exception e) {
             e.printStackTrace();
         }

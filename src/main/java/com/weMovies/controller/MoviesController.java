@@ -39,4 +39,13 @@ public class MoviesController {
         movieService.delMovie(title);
         return "redirect:/movie/list";
     }
+    
+    @RequestMapping("/upload")
+    public String upload(HttpServletRequest request) throws Exception {
+        String days = request.getParameter("days");
+        String[] day = days.split(" - ");
+        System.out.println("시작일 : " + day[0]);
+        System.out.println("종료일 : " + day[1]);
+        return "redirect:/movie/list";
+    }
 }
