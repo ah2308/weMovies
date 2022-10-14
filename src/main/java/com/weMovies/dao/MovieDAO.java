@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
+import com.weMovies.dto.ShowingDTO;
 
 public interface MovieDAO {
     //1차 데이터 수집
@@ -19,4 +20,8 @@ public interface MovieDAO {
     
     //상영 영화 등록하는 곳에 영화관 정보 불러와줌
     public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception;
+    
+    public void upload(ShowingDTO sdto) throws Exception;
+    
+    public int timeCheck(ShowingDTO sdto) throws Exception;
 }

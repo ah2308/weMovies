@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
+import com.weMovies.dto.ShowingDTO;
 
 public interface MovieService {
     
@@ -19,4 +20,8 @@ public interface MovieService {
     public List<MovieDTO> mvUpload(int id) throws Exception;
     
     public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception;
+    
+    public void upload(ShowingDTO sdto) throws Exception;
+    
+    public int timeCheck(ShowingDTO sdto) throws Exception;
 }
