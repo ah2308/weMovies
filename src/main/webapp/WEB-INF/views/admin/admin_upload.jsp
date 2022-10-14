@@ -107,8 +107,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas
-									McGee</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+									McGee</span>
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -141,30 +140,31 @@
 									style="object-fit: cover; height: 650px; width: 420px;">
 							</div>
 							<div class="col-lg-6">
-								<form action="upload" method="post">
+								<form action="upload" method="post" name="form">
 									<div class="row mb-3">
 										<div class="col-lg">
-											<label class="form-label">영화 제목 : (TITLE)</label> <input
-												class="form-control" type="text"
-												value="${list.title}         | 상영시간: ${list.runtime}분"
-												aria-label="title" disabled readonly>
+											<label class="form-label">영화 제목 : (TITLE)    |    상영시간: ${list.runtime}분</label> <input
+												class="form-control" type="text" id="title" name="title"
+												value="${list.title}"
+												aria-label="title" readonly>
 										</div>
 										<div class="col-lg">
 											<label class="form-label">영화 장르 : (GENRES)</label> <input
 												class="form-control" type="text" value="${list.genres}"
-												aria-label="title" disabled readonly>
+												id="genres" name="genres" aria-label="title" readonly>
 										</div>
 									</div>
 									<div class="mb-3">
 										<label class="form-label">영화 소개 : (OVERVIEW)</label> <input
 											class="form-control" type="text" value="${list.overview}"
-											aria-label="title" disabled readonly>
+											id="overview" name="overview" aria-label="title" readonly>
 									</div>
 									<div class="row mb-3">
 										<div class="col-lg">
 											<label class="form-label">영화관 : (CINEMA)</label> <select
 												class="form-control form-select"
-												aria-label="multiple select example">
+												aria-label="multiple select example" id="cinema" name="cinema">
+													<option value="">상영할 영화관을 선택해주세요.</option>
 												<c:forEach items="${clist}" var="clist">
 													<option value="${clist.c_name}">${clist.c_name}</option>
 												</c:forEach>
@@ -173,7 +173,8 @@
 										<div class="col-lg">
 											<label class="form-label">상영관 : (SCREEN)</label> <select
 												class="form-control form-select"
-												aria-label="multiple select example">
+												aria-label="multiple select example" id="screen" name="screen">
+												<option value="">상영관을 선택해주세요.</option>
 												<option value="1">1관</option>
 												<option value="2">2관</option>
 												<option value="3">3관</option>
@@ -183,23 +184,25 @@
 									</div>
 									<div class="row mb-3">
 										<div class="col-lg">
-											<label class="form-label">상영일 : (PERIOD)</label> <input type="text"
-												class="form-control" name="days" value="">
+											<label class="form-label">상영일 : (PERIOD)</label> 
+											<input type="text" class="form-control" id="days" name="days" value="" placeholder="상영 기간을 선택해주세요." autocomplete="off">
 										</div>
 										<div class="col-lg">
-											<label class="form-label">상영 시간 : (SHOWTIMES)</label> <select
-												class="form-control form-select"
-												aria-label="multiple select example">
-												<option value="1">09:40</option>
-												<option value="2">11:50</option>
-												<option value="3">14:00</option>
-												<option value="4">16:10</option>
-												<option value="5">18:20</option>
-												<option value="6">20:30</option>
-												<option value="7">22:40</option>
+											<label class="form-label">상영 시간 : (SHOWTIMES)</label> 
+											<select class="form-control form-select" aria-label="multiple select example" id="showtimes" name="showtimes" onchange="checkTime()">
+												<option value="">상영 시간을 선택해주세요.</option>
+												<option value="09:40">09:40</option>
+												<option value="11:50">11:50</option>
+												<option value="14:00">14:00</option>
+												<option value="16:10">16:10</option>
+												<option value="18:20">18:20</option>
+												<option value="20:30">20:30</option>
+												<option value="22:40">22:40</option>
 											</select>
 										</div>
 									</div>
+									<label class="form-label" style="color:green; display:none;" id="possible">선택 조건에 등록된 영화가 없습니다. 등록 가능한 상태입니다.</label>
+									<label class="form-label" style="color:red; display:none;" id="impossible">선택 조건에 등록된 영화가 존재합니다. 다른 조건을 선택해주세요.</label>
 									<div class="row mb-3" style="padding-top: 11rem;">
 										<div class="col-lg text-right">
 											<div class="my-2"></div>
@@ -211,7 +214,7 @@
 										</div>
 										<div class="col-lg">
 											<div class="my-2"></div>
-											<button type="submit" class="btn btn-success btn-icon-split">
+											<button type="submit" class="btn btn-success btn-icon-split" name="submit">
 												<span class="icon text-white-50"> <i
 													class="fas fa-check"></i>
 												</span> <span class="text">등록하기</span>
@@ -271,7 +274,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(function() {
+		$(document).ready(function() {
 			
 			$('input[name="days"]').daterangepicker({
 				autoUpdateInput : false,
@@ -284,16 +287,78 @@
 					'apply.daterangepicker',
 					function(ev, picker) {
 						$(this).val(
-								picker.startDate.format('YYYY/MM/DD') + ' - '
-										+ picker.endDate.format('YYYY/MM/DD'));
+								picker.startDate.format('YYYY-MM-DD') + ' - '
+										+ picker.endDate.format('YYYY-MM-DD'));
 					});
 
 			$('input[name="days"]').on('cancel.daterangepicker',
 					function(ev, picker) {
 						$(this).val('');
 					});
-
+			$('button[name="submit"]').click(function(){
+				if($("#cinema").val() == ""){
+					alert("영화관을 선택해주세요");
+					$('#cinema').focus();
+					return false;
+				}
+				if($("#screen").val() == ""){
+					alert("상영관을 선택해주세요");
+					$('#screen').focus();
+					return false;
+				}
+				if($("#days").val() == ""){
+					alert("상영 기간을 선택해주세요");
+					$('#days').focus();
+					return false;
+				}
+				if($("#showtimes").val() == ""){
+					alert("상영 시간을 선택해주세요");
+					$('#showtimes').focus();
+					return false;
+				}
+				else{
+					return true;
+				}
+			});
 		});
+		
+	function checkTime(){
+		var showtimes = $('#showtimes').val();
+		var days = [];
+		days = $('#days').val().split(' - ');
+		var start_day = days[0];
+		var end_day = days[1];
+		var cinema = $('#cinema').val();
+		var screen = $('#screen').val();
+		var time = $('#showtimes').val();
+		$.ajax({
+			url:'/movie/timeCheck',
+			type:'POST',
+			data:{
+				start_day: start_day,
+				end_day: end_day,
+				time: time,
+				cinema: cinema,
+				screen: screen
+			},
+			success:function(cnt){
+				if(cnt == 0 && time != null){
+					console.log("0값: 중복된 값이 없습니다.");
+					$('#possible').css("display","inline-block");
+					$('#impossible').css("display","none");
+				}
+				else{
+					console.log("1값: 중복된 값이 존재합니다");
+					$('#possible').css("display","none");
+					$('#impossible').css("display","inline-block");
+					$('#showtimes').focus();
+				}
+			},
+			error:function(){
+				alert("에러입니다.");
+			}
+		});
+	}
 	</script>
 
 	<!-- Custom scripts for all pages-->

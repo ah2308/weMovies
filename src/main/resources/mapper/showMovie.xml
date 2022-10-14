@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="show">
+	<insert id="upload">
+		INSERT INTO wemovies.onscreen_movie (title, genres, overview, cinema, screen, start_day, end_day, showtime) 
+		values (#{title}, #{genres}, #{overview}, #{cinema}, #{screen}, #{start_day}, #{end_day}, #{showtime})
+	</insert>
+	<select id="timeCheck" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM wemovies.onscreen_movie
+			WHERE start_day BETWEEN #{end_day} AND #{start_day}
+			AND end_day <= #{end_day} AND showtime = #{showtime} AND cinema = #{cinema}
+			AND screen = #{screen}
+		]]>
+	</select>
+</mapper>

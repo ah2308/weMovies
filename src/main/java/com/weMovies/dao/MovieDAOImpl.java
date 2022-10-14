@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.weMovies.dto.CinemaDTO;
 import com.weMovies.dto.MovieDTO;
+import com.weMovies.dto.ShowingDTO;
 
 @Repository("movieDAO")
 public class MovieDAOImpl implements MovieDAO{
     
+    private int cnt;
     @Inject
     SqlSession sqlSession;
 
@@ -49,5 +51,15 @@ public class MovieDAOImpl implements MovieDAO{
         // TODO Auto-generated method stub
         return sqlSession.selectList("list", cdto);
     }
-    
+
+    @Override
+    public void upload(ShowingDTO sdto) throws Exception {
+        sqlSession.insert("show.upload", sdto);
+    }
+
+    @Override
+    public int timeCheck(ShowingDTO sdto) throws Exception {
+        int cnt = sqlSession.selectOne("show.timeCheck", sdto);
+        return cnt;
+    }
 }
