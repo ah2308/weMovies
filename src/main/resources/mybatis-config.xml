@@ -6,11 +6,13 @@
   	<typeAlias type="com.weMovies.dto.MemberDTO" alias="MemberDTO"/>
   	<typeAlias type="com.weMovies.dto.MovieDTO" alias="MovieDTO"/>
   	<typeAlias type="com.weMovies.dto.CinemaDTO" alias="CinemaDTO"/>
+  	<typeAlias type="com.weMovies.dto.ShowingDTO" alias="ShowingDTO"/>
   </typeAliases>
   <mappers>
     <mapper resource="mapper/member.xml"/>
     <mapper resource="mapper/insertMember.xml"/>
     <mapper resource="mapper/movie.xml"/>
     <mapper resource="mapper/cinema.xml"/>
+    <mapper resource="mapper/showMovie.xml"/>
   </mappers>
 </configuration>
