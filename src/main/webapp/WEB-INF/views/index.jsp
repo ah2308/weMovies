@@ -41,7 +41,7 @@
                       <ul class="navbar-nav ms-auto py-4 py-lg-0">
                       	<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">예매하기</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logout.do">로그아웃</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">마이 페이지</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="mypage">마이 페이지</a></li>
                       </ul>
                     </c:otherwise>
                   </c:choose>

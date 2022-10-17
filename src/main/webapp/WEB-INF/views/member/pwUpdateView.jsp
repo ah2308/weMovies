@@ -34,24 +34,7 @@
 <!--===============================================================================================-->
 <script src="https://kit.fontawesome.com/3400d00a45.js"
 	crossorigin="anonymous"></script>
-<script type="text/javascript">
-	function fn_idChk() {
-		$.ajax({
-			url : "idChk",
-			type : "post",
-			dataType : "json",
-			data : 'mid=' + $('#mid').val(),
-			success : function(data) {
-				if (data == 1) {
-					alert("중복된 아이디입니다.");
-				} else if (data == 0) {
-					$("#idChk").attr("value", "Y");
-					alert("사용가능한 아이디입니다.");
-				}
-			}
-		})
-	}
-</script>
+
 </head>
 <body>
 	<div class="limiter">
@@ -61,58 +44,37 @@
 					style="padding-top: 15%;">
 					<img src="${path}/resources/images/img-01.png" alt="IMG">
 				</div>
-
-				<form class="login100-form validate-form" action="register.do"
-					method="post" id="regForm">
-					<span class="login100-form-title"> Member Regist </span>
-					<div class="wrap-input100 validate-input"
-						data-validate="아이디를 입력해주세요." required oninput="idChk()">
-						<input class="input100" type="text" name="mid" id="mid"
-							placeholder="ID"> <span class="id_ok"
-							style="color: green; display: none;">사용 가능한 아이디입니다.</span> <span
-							class="id_already" style="color: red; display: none;">사용중인
-							아이디입니다.</span> <span class="focus-input100"></span> <span
-							class="symbol-input100"> <i class="fa-solid fa-id-badge"></i>
-						</span>
-					</div>
-					<button type="button" class="login100-form-btn"
-						onclick="fn_idChk()">id 중복확인</button>
-					<div class="wrap-input100 validate-input"
-						data-validate="비밀번호를 입력해주세요.">
-						<input class="input100" type="password" name="pwd"
+ 
+				<form action="pwUpdate" method="post" id="pwUpdateForm"
+					name="pwUpdateForm">
+					<input type="hidden" id="mid" name="mid" value="${login.mid}">
+					<span class="login100-form-title"> Change Password </span>
+					<div class="wrap-input100 validate-input" data-validate="현재 비밀번호">
+						<input class="input100" type="password" name="pwd" id="pwd"
 							placeholder="Password"> <span class="focus-input100"></span>
 						<span class="symbol-input100"> <i class="fa fa-lock"
 							aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input"
-						data-validate="이름을 입력해주세요.">
-						<input class="input100" type="text" name="name" id="name"
-							placeholder="Your Name"> <span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa-solid fa-user"></i>
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input"
-						data-validate="이메일의 형식이 유효하지 않습니다: ex@abc.xyz">
-						<input class="input100" type="text" name="email"
-							placeholder="Email"> <span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-envelope"
+					<div class="wrap-input100 validate-input" data-validate="새 비밀번호">
+						<input class="input100" type="password" name="pwd1" id="pwd1"
+							placeholder="Password"> <span class="focus-input100"></span>
+						<span class="symbol-input100"> <i class="fa fa-lock"
 							aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input"
-						data-validate="생년월일의 형식이 유효하지 않습니다: YYYYMMDD">
-						<input class="input100" type="text" name="birth"
-							placeholder="Birth: YYYYMMDD"> <span
-							class="focus-input100"></span> <span class="symbol-input100">
-							<i class="fa-solid fa-calendar"></i>
+					<div class="wrap-input100 validate-input" data-validate="새 비밀번호 확인">
+						<input class="input100" type="password" name="pwd2" id="pwd2"
+							placeholder="Password"> <span class="focus-input100"></span>
+						<span class="symbol-input100"> <i class="fa fa-lock"
+							aria-hidden="true"></i>
 						</span>
 					</div>
-
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">회원가입</button>
+						<button type="button" id="pwUpdate" name="pwUpdate"
+							class="login100-form-btn">비밀번호 변경</button>
+						<a href="mypage" class="btn btn-default">취소</a>
 					</div>
-
 					<div class="text-center p-t-136">
 						<a class="txt2" href="/"> 홈으로 <i
 							class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
@@ -122,10 +84,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 	<!--===============================================================================================-->
 	<script src="${path}/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
@@ -142,6 +100,53 @@
 	</script>
 	<!--===============================================================================================-->
 	<script src="${path}/resources/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
 
+			$("#pwUpdate").on("click", function() {
+				if ($("#pwd").val == "") {
+					alert("현재 비밀번호를 입력해주세요");
+					$("#pwd").focus();
+					return false;
+				}
+				if ($("#pwd1").val == "") {
+					alert("변경비밀번호을를 입력해주세요");
+					$("#pwd1").focus();
+					return false;
+				}
+				if ($("#pwd2").val == "") {
+					alert("변경비밀번호를 입력해주세요");
+					$("#pwd2").focus();
+					return false;
+				}
+				if ($("#pwd1").val() != $("#pwd2").val()) {
+					alert("변경비밀번호가 일치하지 않습니다.");
+					$("#pwd2").focus();
+				}
+				if ($("#pwd").val() == $("#pwd1").val()) {
+					alert("현재 비밀번호와 변경비밀번호가 일치합니다.");
+					$("#pwd1").focus();
+				}
+
+				$.ajax({
+					url : "pwCheck",
+					type : "POST",
+					dataType : "json",
+					data : $("#pwUpdateForm").serializeArray(),
+					success : function(data) {
+
+						if (data == 0) {
+							alert("패스워드가 틀렸습니다.");
+							return;
+						} else {
+							if (confirm("변경하시겠습니까?")) {
+								$("#pwUpdateForm").submit();
+							}
+						}
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

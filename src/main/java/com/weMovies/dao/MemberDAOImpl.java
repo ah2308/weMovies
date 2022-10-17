@@ -1,5 +1,8 @@
 package com.weMovies.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,7 +13,7 @@ import com.weMovies.dto.MemberDTO;
 
 @Repository("memberDAO")
 public class MemberDAOImpl implements MemberDAO {
-	
+
 	@Inject
 	SqlSession sqlSession;
 
@@ -19,15 +22,14 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.login", dto);
 	}
 
-    @Override
-    public void register(MemberDTO dto) throws Exception {
-        sqlSession.insert("insertMember.register", dto);
-    }
+	@Override
+	public void register(MemberDTO dto) throws Exception {
+		sqlSession.insert("insertMember.register", dto);
+	}
 
-    @Override
-    public int idChk(String mid) throws Exception {
-        int result = sqlSession.selectOne("insertMember.idChk", mid);
-        return result;
-    }
-
+	@Override
+	public int idChk(String mid) throws Exception {
+		int result = sqlSession.selectOne("insertMember.idChk", mid);
+		return result;
+	}
 }
