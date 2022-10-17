@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
-<head> 
+<head>
 <title>My Page</title>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <meta charset="UTF-8">
@@ -43,17 +43,17 @@
 				<span class="login100-form-title"> My Page </span>
 
 				<div class="wrap-input100 validate-input" data-validate="ID">
-					<a class="nav-link px-lg-3 py-3 py-lg-4" href="pwUpdateView">비밀번호
-						변경</a><span class="focus-input100"></span> <i class="fa fa-envelope"
+					<a class="nav-link px-lg-3 py-3 py-lg-4" href="memberUpdateView">회원정보
+						수정 </a><span class="focus-input100"></span> <i class="fa fa-envelope"
+						aria-hidden="true"></i>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="ID">
+					<a class="nav-link px-lg-3 py-3 py-lg-4" href="#">#
+						</a> <span class="focus-input100"></span> <i class="fa fa-envelope"
 						aria-hidden="true"></i>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate="ID">
 					<a class="nav-link px-lg-3 py-3 py-lg-4" href="#">예매 취소</a><span
-						class="focus-input100"></span> <i class="fa fa-envelope"
-						aria-hidden="true"></i>
-				</div>
-				<div class="wrap-input100 validate-input" data-validate="ID">
-					<a class="nav-link px-lg-3 py-3 py-lg-4" href="#">#</a> <span
 						class="focus-input100"></span> <i class="fa fa-envelope"
 						aria-hidden="true"></i>
 				</div>
