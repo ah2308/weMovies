@@ -44,7 +44,7 @@
 					style="padding-top: 15%;">
 					<img src="${path}/resources/images/img-01.png" alt="IMG">
 				</div>
-
+ 
 				<form action="pwUpdate" method="post" id="pwUpdateForm"
 					name="pwUpdateForm">
 					<input type="hidden" id="mid" name="mid" value="${login.mid}">
