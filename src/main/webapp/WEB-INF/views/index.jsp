@@ -38,7 +38,8 @@
                       </ul>
                     </c:when>
                     <c:otherwise>
-                      <ul>
+                      <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                      	<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">예매하기</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logout.do">로그아웃</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">마이 페이지</a></li>
                       </ul>
@@ -83,7 +84,7 @@
                 <div class="col-md-6">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
-                          <div class="card h-100">
+                          <div class="card h-100 text-center">
                             <img src="${path}/resources/assets/img/movie_card_img" class="card-img-top">
                             <div class="card-body">
                               <h5 class="card-title">영화 제목</h5>
