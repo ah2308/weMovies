@@ -1,7 +1,7 @@
 package com.weMovies.dto;
 
 public class BoardDTO {
-
+    
 	int seq;
 	String subject;
 	String content;

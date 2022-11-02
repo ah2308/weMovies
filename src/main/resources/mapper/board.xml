@@ -12,7 +12,8 @@
 	</select>
 	
 	<select id="maxSeq" resultType="java.lang.Integer">
-		select max(SEQ) from wemovies.board
+		select max(SEQ) 
+		from wemovies.board
 	</select>
 	
 	<insert id="regi">
@@ -36,7 +37,13 @@
 	</insert>
 	
 	<select id="boardRegi" resultType="MovieDTO">
-		SELECT title, poster_path, release_date, overview, genres, runtime from wemovies.movieinfo where id = #{id}
+		SELECT title, 
+		poster_path, 
+		release_date, 
+		overview, genres, 
+		runtime 
+		from wemovies.movieinfo 
+		where id = #{id}
 	</select>
 	
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.weMovies.dto.BoardDTO;
 import com.weMovies.dto.MovieDTO;
@@ -28,7 +29,7 @@ import com.weMovies.service.MovieService;
 @RequestMapping("/board/*")
 public class BoardController {
 
-    @Autowired
+    @Inject
     private MovieService movieService;
     
     @Inject
@@ -48,9 +49,12 @@ public class BoardController {
         return "board/boardList";
     }
 
-    @RequestMapping(value = "/regiView", method = RequestMethod.GET)
-    public String boardRegi(Locale locale, Model model, @RequestParam("id") int id) throws Exception {
-        boardService.boardRegi(id);
+    @RequestMapping(value = "/regiView", method = RequestMethod.POST)
+    public String boardRegi(Locale locale, Model model, HttpServletRequest request) throws Exception {
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<MovieDTO> list = boardService.boardRegi(id);
+        //boardService.boardRegi(id);
+        model.addAttribute("list", list);
         return "board/regi";
     }
 

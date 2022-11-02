@@ -12,5 +12,5 @@ public interface BoardService {
     
     public List<MovieDTO> list(MovieDTO movieDTO) throws Exception;
     public int regi(BoardDTO bdto) throws Exception;
-    public void boardRegi(int id) throws Exception;
+    public List<MovieDTO> boardRegi(int id) throws Exception;
 }

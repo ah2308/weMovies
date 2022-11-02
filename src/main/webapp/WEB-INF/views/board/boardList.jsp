@@ -122,7 +122,7 @@
     									<h5 class="card-title">${list.title}</h5>
     									<p class="card-text">${list.release_date}</p>
     									<div style="margin:auto;text-align:center;">
-    										<form action="/board/regiView" method="get" style="display:inline-block;">
+    										<form action="/board/regiView" method="post" style="display:inline-block;">
     											<button type="submit" class="btn btn-primary btn-sm" name="id" value="${list.id}">
                                         			한줄평 남기기
                                    				</button>

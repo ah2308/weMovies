@@ -22,8 +22,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public void boardRegi(int id) throws Exception {
-        boardDAO.boardRegi(id);
+	public List<MovieDTO> boardRegi(int id) throws Exception {
+        return boardDAO.boardRegi(id);
     }
 	
 	@Override
