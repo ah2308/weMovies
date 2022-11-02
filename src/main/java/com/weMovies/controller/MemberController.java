@@ -117,10 +117,21 @@ public class MemberController {
 		return "member/mypage";
 	}
 
-	// pw 뷰 호출
-	@RequestMapping(value = "pwUpdateView", method = RequestMethod.GET)
-	public String pwUpdateView() throws Exception {
-		return "member/pwUpdateView";
+	//memberUpdate 뷰 호출
+	@RequestMapping(value = "memberUpdateView", method = RequestMethod.GET)
+	public String registerUpdateView() throws Exception {
+
+		return "member/memberUpdateView";
 	}
 
+	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
+	public String registerUpdate(MemberDTO dto, Model model, HttpSession session) throws Exception {
+
+		service.memberUpdate(dto);
+
+		session.invalidate();
+		model.addAttribute("msg", "회원정보 수정이 완료되었습니다.");
+		model.addAttribute("url", "loginForm");
+		return "alert/message";
+	}
 }

@@ -35,4 +35,9 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public void memberUpdate(MemberDTO dto) throws Exception {
+		dao.memberUpdate(dto);
+	}
+
 }

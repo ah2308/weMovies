@@ -17,4 +17,5 @@ public interface MemberService {
 	// ID 중복체크
 	public int idChk(String mid) throws Exception;
 
+	public void memberUpdate(MemberDTO dto) throws Exception;
 }
