@@ -49,7 +49,7 @@ public class MovieDAOImpl implements MovieDAO{
     @Override
     public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception {
         // TODO Auto-generated method stub
-        return sqlSession.selectList("list", cdto);
+        return sqlSession.selectList("cinema.list", cdto);
     }
 
     @Override

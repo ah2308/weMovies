@@ -15,4 +15,10 @@
 			AND screen = #{screen}
 		]]>
 	</select>
+	<select id="list" resultType="ShowingDTO">
+		SELECT title FROM wemovies.onscreen_movie
+	</select>
+	<select id="listInfo" resultType="ShowingDTO">
+		SELECT cinema, screen, start_day, end_day, showtime FROM wemovies.onscreen_movie where title = #{title}
+	</select>
 </mapper>
