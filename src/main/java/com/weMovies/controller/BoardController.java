@@ -1,35 +1,77 @@
 package com.weMovies.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.weMovies.dto.BoardDTO;
 import com.weMovies.dto.MovieDTO;
+import com.weMovies.service.BoardService;
 import com.weMovies.service.MovieService;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/board/*")
 public class BoardController {
-	
-	@Autowired
+
+    @Autowired
     private MovieService movieService;
-	
-	/*
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) throws Exception {
-		return "board/list";
-	}*/
-	
-	@RequestMapping("list")
-    public String getList(MovieDTO movieDTO, Model model) throws Exception{
+    
+    @Inject
+    private BoardService boardService;
+    
+    /*
+     * @RequestMapping(value = "list", method = RequestMethod.GET)
+     * public String list(Locale locale, Model model) throws Exception {
+     * return "board/list";
+     * }
+     */
+
+    @RequestMapping(value = "/boardList", method = RequestMethod.GET)
+    public String getList(MovieDTO movieDTO, Model model) throws Exception {
         List<MovieDTO> list = movieService.movieList(movieDTO);
         model.addAttribute("list", list);
-        return "board/list";
+        return "board/boardList";
     }
+
+    @RequestMapping(value = "/regiView", method = RequestMethod.GET)
+    public String boardRegi(Locale locale, Model model, @RequestParam("id") int id) throws Exception {
+        boardService.boardRegi(id);
+        return "board/regi";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/regi", method = RequestMethod.POST)
+    public String regi(Locale locale, Model model, HttpServletRequest request) throws Exception {
+
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+
+        BoardDTO bdto = new BoardDTO();
+        bdto.setName(request.getParameter("name"));
+        bdto.setContent(request.getParameter("content"));
+        bdto.setSubject(request.getParameter("subject"));
+        bdto.setReg_date(format.format(date));
+
+        if (boardService.regi(bdto) == 1) {
+            return "Y";
+        } else {
+            return "N";
+        }
+    }
+
 }
