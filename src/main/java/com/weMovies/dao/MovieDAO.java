@@ -17,11 +17,10 @@ public interface MovieDAO {
     public void mvUpdate(MovieDTO mdto) throws Exception;
     //상영 영화 등록하는 곳에 영화정보 불러와줌
     public List<MovieDTO> mvUpload(int id) throws Exception;
-    
     //상영 영화 등록하는 곳에 영화관 정보 불러와줌
     public List<CinemaDTO> cListUp(CinemaDTO cdto) throws Exception;
-    
+    //상영 영화 리스트에 등록
     public void upload(ShowingDTO sdto) throws Exception;
-    
+    //영화 등록할 때 겹치는 일정이 있는지 확인
     public int timeCheck(ShowingDTO sdto) throws Exception;
 }

@@ -1,5 +1,10 @@
 package com.weMovies.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ShowingDTO {
     private String title;
     private String genres;
@@ -15,6 +20,14 @@ public class ShowingDTO {
     public ShowingDTO(String title, String showtime) {
         this.title = title;
         this.showtime = showtime;
+    }
+    public ShowingDTO(String title, String start_day, String end_day, String time, String cinema, String screen) {
+        this.title = title;
+        this.start_day = start_day;
+        this.end_day = end_day;
+        this.showtime = time;
+        this.cinema = cinema;
+        this.screen = screen;
     }
     public ShowingDTO(String start_day, String end_day, String time, String cinema, String screen) {
         this.start_day = start_day;
