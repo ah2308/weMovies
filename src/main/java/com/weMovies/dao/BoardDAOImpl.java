@@ -2,14 +2,16 @@ package com.weMovies.dao;
 
 import java.util.List;
 
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.weMovies.dto.BoardDTO;
 import com.weMovies.dto.MovieDTO;
-import com.weMovies.dto.ShowingDTO;
 
+@Repository("boardDAO")
 public class BoardDAOImpl implements BoardDAO {
 
     @Inject
@@ -31,7 +33,7 @@ public class BoardDAOImpl implements BoardDAO {
     }
 
     @Override
-    public void boardRegi(int id) throws Exception {
-        sqlSession.selectList("board.boardRegi", id);
+    public List<MovieDTO> boardRegi(int id) throws Exception {
+        return sqlSession.selectList("board.boardRegi", id);
     }
 }
