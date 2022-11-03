@@ -40,8 +40,7 @@
 		SELECT title, 
 		poster_path, 
 		release_date, 
-		overview, genres, 
-		runtime 
+		overview
 		from wemovies.movieinfo 
 		where id = #{id}
 	</select>

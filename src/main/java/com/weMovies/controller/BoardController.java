@@ -25,6 +25,7 @@ import com.weMovies.service.MovieService;
 /**
  * Handles requests for the application home page.
  */
+
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
@@ -72,7 +73,8 @@ public class BoardController {
         bdto.setReg_date(format.format(date));
 
         if (boardService.regi(bdto) == 1) {
-            return "Y";
+            System.out.println("컨트롤러");
+            return "/boardList";
         } else {
             return "N";
         }
