@@ -50,3 +50,20 @@ CREATE TABLE wemovies.theater(
 insert into wemovies.theater (theater, t_time) values (4, '11:00');
 select * from wemovies.theater;
 drop table wemovies.theater;
+
+CREATE TABLE wemovies.onscreen_movie(
+    title varchar(30) not null,
+    genres varchar(50) not null,
+    overview varchar(3000) not null,
+    cinema varchar(30) not null,
+    screen varchar(30) not null,
+    start_day date not null,
+    end_day date not null,
+    showtime varchar(30) not null
+);
+select * from wemovies.onscreen_movie;
+drop table wemovies.onscreen_movie;
+
+select * from information_schema.table_constraints where table_name = 'movie_detail';
+alter table movie_detail drop foreign key ibfk_1;
+delete table wemovies.movieinfo;

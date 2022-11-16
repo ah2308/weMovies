@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -119,7 +119,7 @@
 					<!-- 영화정보를 DB에서 가져와서 화면에 보여주는 부분 -->
 					<div class="row justify-content-md-center" style="margin: 25px;">
 						<!-- Content Column -->
-						<c:forEach items="${list}" var="list">
+						<c:forEach var="list" items="${list}">
 							<div class="col-lg-4">
 								<img
 									src="https://image.tmdb.org/t/p/original/${list.poster_path}"
@@ -145,12 +145,35 @@
 											class="form-control" type="text" value="${list.overview}"
 											id="overview" name="overview" aria-label="title" readonly>
 									</div>
+									<table>
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>제목</th>
+												<th>내용</th>
+												<th>작성자</th>
+												<th>날짜</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${list2}" var="list2">
+											<c:if test="${list2.subject eq list.title }">
+												<tr>
+													<td>${list2.seq}</td>
+													<td>${list2.subject}</td>
+													<td>${list2.content}</td>
+													<td>${list2.name}</td>
+													<td>${list2.reg_date}</td>
+												</tr>
+												</c:if>
+											</c:forEach>		
+										</tbody>
+									</table>
 									<div class="row mb-3">
 										<div class="col-lg">
 											<label class="form-label"> 한줄평 </label> <input type="text"
 												class="form-control" id="content" name="content"
-												placeholder="한줄평을 남겨주세요."
-												autocomplete="off">
+												placeholder="한줄평을 남겨주세요." autocomplete="off">
 										</div>
 									</div>
 									<div class="row mb-3" style="padding-top: 11rem;">
