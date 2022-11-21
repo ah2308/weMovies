@@ -14,17 +14,10 @@ public class ShowingDTO {
     private String start_day;
     private String end_day;
     private String showtime;
-<<<<<<< HEAD
-
-    public ShowingDTO() {
-    }
-
-=======
     private String poster_path;
     
     public ShowingDTO() {}
     
->>>>>>> branch 'master' of https://github.com/ah2308/weMovies.git
     public ShowingDTO(String title, String showtime) {
         this.title = title;
         this.showtime = showtime;
@@ -46,13 +39,8 @@ public class ShowingDTO {
         this.cinema = cinema;
         this.screen = screen;
     }
-<<<<<<< HEAD
 
-    public ShowingDTO(String title, String genres, String overview, String cinema, String screen, String start_day,
-            String end_day, String showtime) {
-=======
     public ShowingDTO(String title, String genres, String overview, String cinema, String screen, String start_day, String end_day, String showtime, String poster_path) {
->>>>>>> branch 'master' of https://github.com/ah2308/weMovies.git
         this.title = title;
         this.genres = genres;
         this.overview = overview;
@@ -128,7 +116,6 @@ public class ShowingDTO {
         this.showtime = showtime;
     }
 
-<<<<<<< HEAD
     @Override
     public String toString() {
         return "ShowingDTO [title=" + title + ", genres=" + genres + ", overview=" + overview + ", cinema=" + cinema
@@ -136,7 +123,6 @@ public class ShowingDTO {
                 + "]";
     }
 
-=======
     public String getPoster_path() {
         return poster_path;
     }
@@ -144,5 +130,5 @@ public class ShowingDTO {
     public void setPoster_path(String poster_path) {
         this.poster_path = poster_path;
     }
->>>>>>> branch 'master' of https://github.com/ah2308/weMovies.git
+
 }
