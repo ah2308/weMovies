@@ -40,6 +40,10 @@ public class BoardDAOImpl implements BoardDAO {
     public List<MovieDTO> boardRegi(int id) throws Exception {
         return sqlSession.selectList("board.boardRegi", id);
     }
-
+ 
+    @Override
+    public int boardUpdate(BoardDTO bdto) throws Exception {
+        return sqlSession.update("board.update", bdto);
+    }
 
 }

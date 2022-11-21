@@ -13,4 +13,6 @@ public interface BoardDAO {
 	public Integer getMaxSeq();
 	public int regi(BoardDTO bdto);
 	public List<MovieDTO> boardRegi(int id) throws Exception;
+	public int boardUpdate(BoardDTO bdto) throws Exception;
+
 }

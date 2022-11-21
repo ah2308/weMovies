@@ -65,15 +65,9 @@
 			<div class="sidebar-heading">나의 평점</div>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i> <span>수정</span>
+			<li class="nav-item"><a class="nav-link" href="update">
+					<i class="fas fa-fw fa-chart-area"></i> <span>나의 평점 목록</span>
 			</a></li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
-					<i class="fas fa-fw fa-table"></i> <span>삭제</span>
-			</a></li>
-
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 		</ul>
@@ -111,7 +105,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+						<h1 class="h3 mb-0 text-gray-800">한줄평</h1>
 					</div>
 
 
@@ -145,6 +139,7 @@
 											class="form-control" type="text" value="${list.overview}"
 											id="overview" name="overview" aria-label="title" readonly>
 									</div>
+									<label class="form-label"> 한줄평 </label> 
 									<table>
 										<thead>
 											<tr>
@@ -159,19 +154,20 @@
 											<c:forEach items="${list2}" var="list2">
 											<c:if test="${list2.subject eq list.title }">
 												<tr>
-													<td>${list2.seq}</td>
-													<td>${list2.subject}</td>
-													<td>${list2.content}</td>
-													<td>${list2.name}</td>
-													<td>${list2.reg_date}</td>
+													<td>${list2.seq}&nbsp;</td>
+													<td>${list2.subject}&nbsp;</td>
+													<td>${list2.content}&nbsp;</td>
+													<td>${list2.name}&nbsp;</td>
+													<td>"${list2.reg_date}"</td>
 												</tr>
 												</c:if>
 											</c:forEach>		
 										</tbody>
 									</table>
+									<br>
 									<div class="row mb-3">
 										<div class="col-lg">
-											<label class="form-label"> 한줄평 </label> <input type="text"
+											<input type="text"
 												class="form-control" id="content" name="content"
 												placeholder="한줄평을 남겨주세요." autocomplete="off">
 										</div>

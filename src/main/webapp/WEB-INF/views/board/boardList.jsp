@@ -52,7 +52,7 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link"
-				href="/movie/list"> <i class="fas fa-fw fa-tachometer-alt"></i>
+				href="boardList"> <i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>평점</span></a></li>
 
 			<!-- Divider -->
@@ -62,15 +62,9 @@
 			<div class="sidebar-heading">나의 평점</div>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i> <span>수정</span>
+			<li class="nav-item"><a class="nav-link" href="update">
+					<i class="fas fa-fw fa-chart-area"></i> <span>나의 평점 목록</span>
 			</a></li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
-					<i class="fas fa-fw fa-table"></i> <span>삭제</span>
-			</a></li>
-
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 		</ul>
@@ -95,7 +89,7 @@
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ms-auto py-4 py-lg-0">
 						<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃</a></li>
-						<li class="nav-item"><a class="nav-link" href="mypage">마이
+						<li class="nav-item"><a class="nav-link" href="../mypage">마이
 								페이지</a></li>
 						<li class="nav-item"><a class="nav-link" href="boardList">게시판</a></li>
 
@@ -109,7 +103,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+						<h1 class="h3 mb-0 text-gray-800">영화 목록</h1>
 					</div>
 
 

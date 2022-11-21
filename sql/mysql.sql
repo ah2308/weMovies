@@ -66,4 +66,8 @@ drop table wemovies.onscreen_movie;
 
 select * from information_schema.table_constraints where table_name = 'movie_detail';
 alter table movie_detail drop foreign key ibfk_1;
-delete table wemovies.movieinfo;
+delete table movie_detail;
+
+SET foreign_key_checks = 0;
+drop table TABLENAME
+SET foreign_key_checks = 1;

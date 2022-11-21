@@ -42,5 +42,8 @@ public class BoardServiceImpl implements BoardService {
 
         return boardDAO.regi(bdto);
     }
-
+    @Override
+    public int boardUpdate(BoardDTO bdto) throws Exception {
+        return boardDAO.boardUpdate(bdto);
+    }
 }

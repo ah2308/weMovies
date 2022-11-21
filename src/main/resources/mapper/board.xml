@@ -46,4 +46,12 @@
 		from wemovies.movieinfo
 		where id = #{id}
 	</select>
+	
+	<update id="update">
+		UPDATE wemovies.board
+		SET
+			content = #{content}
+		WHERE
+			name = #{name}
+	</update>
 </mapper>

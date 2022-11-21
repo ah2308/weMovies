@@ -42,21 +42,6 @@ public class BoardController {
     @Inject
     private BoardService boardService;
 
-    /*
-     * @RequestMapping(value = "list", method = RequestMethod.GET)
-     * public String list(Locale locale, Model model) throws Exception {
-     * return "board/list";
-     * }
-     */
-   
-    /*@RequestMapping(value = "/boardList", method = RequestMethod.GET)
-    public String getList(MovieDTO movieDTO, Model model) throws Exception {     
-        List<MovieDTO> list = movieService.movieList(movieDTO);
-        model.addAttribute("list", list);
-        System.out.println(list);
-        return "board/boardList";
-    }
-    */
     @RequestMapping(value = "/boardList", method = RequestMethod.GET)
     public String list(Locale locale, Model model, MovieDTO movieDTO) throws Exception {
           List<MovieDTO> list = movieService.movieList(movieDTO);
@@ -76,14 +61,10 @@ public class BoardController {
 
     @ResponseBody
     @RequestMapping(value = "/regi", method = RequestMethod.POST)
-    public String regi(Locale locale, Model model, HttpServletRequest request) throws Exception {
+    public String regi(Locale locale, Model model, HttpServletRequest request, BoardDTO bdto) throws Exception {
         Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 
-        BoardDTO bdto = new BoardDTO();
-        bdto.setName(request.getParameter("name"));
-        bdto.setContent(request.getParameter("content"));
-        bdto.setSubject(request.getParameter("subject"));
         bdto.setReg_date(format.format(date));
 
         if (boardService.regi(bdto) == 1) {
@@ -94,4 +75,21 @@ public class BoardController {
         }
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String boardUpdateView(BoardDTO bdto, Model model, ServletRequest request) throws Exception {
+        List<BoardDTO> list2 = boardService.list(bdto);
+        model.addAttribute("list2", list2);
+        return "board/update";
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
+    public String boardUpdate(Locale locale, Model model, ServletRequest request, BoardDTO bdto) throws Exception {   
+        if(boardService.boardUpdate(bdto) == 1) {
+            System.out.println("업데이트");
+            return "/boardList";
+        }else {
+            return "N";
+        }
+    }
 }
