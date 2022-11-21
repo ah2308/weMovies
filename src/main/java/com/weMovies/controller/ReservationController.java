@@ -26,15 +26,4 @@ public class ReservationController {
         model.addAttribute("list", list);
         return "ticket/ticket";
     }
-<<<<<<< HEAD
-    
-    @RequestMapping(value="/ressub", method = RequestMethod.POST)
-    public String ticketView2(@RequestParam("title") String title, Model model) throws Exception{
-        System.out.println("title : " + title);
-        List<ShowingDTO> listInfo = resService.listInfo(title);
-        model.addAttribute("info", listInfo);
-        return "ticket/ticket";
-    }
-=======
->>>>>>> branch 'master' of https://github.com/ah2308/weMovies.git
 }
