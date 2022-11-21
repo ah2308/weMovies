@@ -11,30 +11,36 @@ import com.weMovies.dto.BoardDTO;
 import com.weMovies.dto.MovieDTO;
 
 @Service("boardService")
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
-	@Inject
-	private BoardDAO boardDAO;
-	
-	@Override
-	public List<MovieDTO> list(MovieDTO movieDTO) throws Exception {
-		return boardDAO.list(movieDTO);
-	}
-	
-	@Override
-	public List<MovieDTO> boardRegi(int id) throws Exception {
+    @Inject
+    private BoardDAO boardDAO;
+
+    @Override
+    public List<MovieDTO> movieList(MovieDTO movieDTO) throws Exception {
+        return boardDAO.movieList(movieDTO);
+    }
+
+    @Override
+    public List<BoardDTO> list(BoardDTO bdto) throws Exception {
+        return boardDAO.list(bdto);
+    }
+
+    @Override
+    public List<MovieDTO> boardRegi(int id) throws Exception {
         return boardDAO.boardRegi(id);
     }
-	
-	@Override
+
+    @Override
     public int regi(BoardDTO bdto) throws Exception {
-        
+
         if (boardDAO.getMaxSeq() == null) { // 게시글이 존재하지 않을 때
             bdto.setSeq(1); // SEQ는 1
         } else { // 게시글이 존재할 때
             bdto.setSeq(boardDAO.getMaxSeq() + 1); // 최대값에 +1
         }
-        
+
         return boardDAO.regi(bdto);
     }
+
 }

@@ -2,7 +2,6 @@ package com.weMovies.dao;
 
 import java.util.List;
 
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,10 +17,15 @@ public class BoardDAOImpl implements BoardDAO {
     private SqlSession sqlSession;
 
     @Override
-    public List<MovieDTO> list(MovieDTO movieDTO) throws Exception {
-        return sqlSession.selectOne("board.list", movieDTO);
+    public List<MovieDTO> movieList(MovieDTO movieDTO) throws Exception {
+        return sqlSession.selectOne("movie.movieList", movieDTO);
     }
-
+    
+    @Override
+    public List<BoardDTO> list(BoardDTO bdto) throws Exception {  
+        return sqlSession.selectList("board.list");
+    }
+    
     @Override
     public Integer getMaxSeq() {
         return sqlSession.selectOne("board.maxSeq");
@@ -36,4 +40,6 @@ public class BoardDAOImpl implements BoardDAO {
     public List<MovieDTO> boardRegi(int id) throws Exception {
         return sqlSession.selectList("board.boardRegi", id);
     }
+
+
 }

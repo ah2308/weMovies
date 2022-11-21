@@ -1,11 +1,17 @@
 package com.weMovies.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,37 +38,45 @@ public class BoardController {
 
     @Inject
     private MovieService movieService;
-    
+
     @Inject
     private BoardService boardService;
-    
+
     /*
      * @RequestMapping(value = "list", method = RequestMethod.GET)
      * public String list(Locale locale, Model model) throws Exception {
      * return "board/list";
      * }
      */
-
-    @RequestMapping(value = "/boardList", method = RequestMethod.GET)
-    public String getList(MovieDTO movieDTO, Model model) throws Exception {
+   
+    /*@RequestMapping(value = "/boardList", method = RequestMethod.GET)
+    public String getList(MovieDTO movieDTO, Model model) throws Exception {     
         List<MovieDTO> list = movieService.movieList(movieDTO);
         model.addAttribute("list", list);
+        System.out.println(list);
         return "board/boardList";
     }
-
+    */
+    @RequestMapping(value = "/boardList", method = RequestMethod.GET)
+    public String list(Locale locale, Model model, MovieDTO movieDTO) throws Exception {
+          List<MovieDTO> list = movieService.movieList(movieDTO);
+          model.addAttribute("list", list);
+          return "board/boardList";
+    }
+    
     @RequestMapping(value = "/regiView", method = RequestMethod.POST)
-    public String boardRegi(Locale locale, Model model, HttpServletRequest request) throws Exception {
+    public String boardRegi(Locale locale, Model model, HttpServletRequest request, BoardDTO bdto) throws Exception {
         int id = Integer.parseInt(request.getParameter("id"));
         List<MovieDTO> list = boardService.boardRegi(id);
-        //boardService.boardRegi(id);
+        List<BoardDTO> list2 = boardService.list(bdto);
         model.addAttribute("list", list);
+        model.addAttribute("list2", list2);
         return "board/regi";
     }
 
     @ResponseBody
     @RequestMapping(value = "/regi", method = RequestMethod.POST)
     public String regi(Locale locale, Model model, HttpServletRequest request) throws Exception {
-
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 
