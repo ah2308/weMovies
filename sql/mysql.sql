@@ -51,19 +51,10 @@ insert into wemovies.theater (theater, t_time) values (4, '11:00');
 select * from wemovies.theater;
 drop table wemovies.theater;
 
-CREATE TABLE wemovies.onscreen_movie(
-    title varchar(30) not null,
-    genres varchar(50) not null,
-    overview varchar(3000) not null,
-    cinema varchar(30) not null,
-    screen varchar(30) not null,
-    start_day date not null,
-    end_day date not null,
-    showtime varchar(30) not null
-);
 select * from wemovies.onscreen_movie;
 drop table wemovies.onscreen_movie;
 
+<<<<<<< HEAD
 select * from information_schema.table_constraints where table_name = 'movie_detail';
 alter table movie_detail drop foreign key ibfk_1;
 delete table movie_detail;
@@ -71,3 +62,16 @@ delete table movie_detail;
 SET foreign_key_checks = 0;
 drop table TABLENAME
 SET foreign_key_checks = 1;
+
+CREATE TABLE wemovies.onscreen_movie(
+	title varchar(50) not null,
+	genres varchar(50) not null,
+	overview varchar(500) not null,
+	cinema varchar(50) not null,
+	screen varchar(50) not null,
+	start_day varchar(50) not null,
+	end_day varchar(50) not null,
+	showtime varchar(50) not null,
+	poster_path varchar(200) not null
+)
+

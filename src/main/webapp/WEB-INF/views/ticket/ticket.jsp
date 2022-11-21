@@ -20,6 +20,7 @@
 		<div class="row">
 			<div class="col">
 				<form>
+<<<<<<< HEAD
 					<select name="title" class="form-control" onchange="checkInfo()">
 						<c:forEach items="${list}" var="list">
 							<option value="${list.title}" id="title">${list.title}</option>
@@ -34,10 +35,22 @@
 							<option value="${info.cinema}">${info.cinema}</option>
 						</c:forEach>
 					</select>
+=======
+				<c:forEach items="${list}" var="list">
+					<img src="${list.poster_path}" style="object-fit: cover; height: 650px; width: 420px;">
+					<label class="form-control">${list.title}</label>
+					<label class="form-control">${list.overview}</label>
+					<label class="form-control">${list.cinema}</label>
+					<label class="form-control">${list.showtime}</label>
+					<label class="form-control">${list.screen}</label>
+					<label class="form-control">${list.genres}</label>
+				</c:forEach>
+>>>>>>> branch 'master' of https://github.com/ah2308/weMovies.git
 				</form>
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	 -->
 	<!-- 영화정보를 DB에서 가져와서 화면에 보여주는 부분 -->
 	<div class="row justify-content-md-center" style="margin: 25px;">
@@ -73,5 +86,7 @@
 			});
 		}
 	</script>
+=======
+>>>>>>> branch 'master' of https://github.com/ah2308/weMovies.git
 </body>
 </html>

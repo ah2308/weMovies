@@ -4,8 +4,8 @@
   
 <mapper namespace="show">
 	<insert id="upload">
-		INSERT INTO wemovies.onscreen_movie (title, genres, overview, cinema, screen, start_day, end_day, showtime) 
-		values (#{title}, #{genres}, #{overview}, #{cinema}, #{screen}, #{start_day}, #{end_day}, #{showtime})
+		INSERT INTO wemovies.onscreen_movie (title, genres, overview, cinema, screen, start_day, end_day, showtime, poster_path) 
+		values (#{title}, #{genres}, #{overview}, #{cinema}, #{screen}, #{start_day}, #{end_day}, #{showtime}, #{poster_path})
 	</insert>
 	<select id="timeCheck" resultType="int">
 		<![CDATA[
@@ -16,9 +16,6 @@
 		]]>
 	</select>
 	<select id="list" resultType="ShowingDTO">
-		SELECT title FROM wemovies.onscreen_movie
-	</select>
-	<select id="listInfo" resultType="ShowingDTO">
-		SELECT cinema, screen, start_day, end_day, showtime FROM wemovies.onscreen_movie where title = #{title}
+		SELECT * FROM wemovies.onscreen_movie
 	</select>
 </mapper>
