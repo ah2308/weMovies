@@ -25,11 +25,4 @@ public class ReservationController {
         model.addAttribute("list", list);
         return "ticket/ticket";
     }
-    
-    @RequestMapping("/ressub")
-    public String ticketView2(@RequestParam("title") String title, Model model) throws Exception{
-        List<ShowingDTO> listInfo = resService.listInfo(title);
-        model.addAttribute("info", listInfo);
-        return "ticket/ticket";
-    }
 }

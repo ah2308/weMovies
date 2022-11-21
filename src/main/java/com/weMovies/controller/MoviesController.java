@@ -53,7 +53,8 @@ public class MoviesController {
         String cinema = request.getParameter("cinema");
         String screen = request.getParameter("screen");
         String showtimes = request.getParameter("showtimes");
-        ShowingDTO sDTO = new ShowingDTO(title, genres, overview, cinema, screen, day[0], day[1], showtimes);
+        String poster_path = request.getParameter("poster_path");
+        ShowingDTO sDTO = new ShowingDTO(title, genres, overview, cinema, screen, day[0], day[1], showtimes, poster_path);
         movieService.upload(sDTO);
         return "redirect:/movie/list";
     }

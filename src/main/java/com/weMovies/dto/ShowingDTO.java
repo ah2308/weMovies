@@ -14,6 +14,7 @@ public class ShowingDTO {
     private String start_day;
     private String end_day;
     private String showtime;
+    private String poster_path;
     
     public ShowingDTO() {}
     
@@ -36,7 +37,7 @@ public class ShowingDTO {
         this.cinema = cinema;
         this.screen = screen;
     }
-    public ShowingDTO(String title, String genres, String overview, String cinema, String screen, String start_day, String end_day, String showtime) {
+    public ShowingDTO(String title, String genres, String overview, String cinema, String screen, String start_day, String end_day, String showtime, String poster_path) {
         this.title = title;
         this.genres = genres;
         this.overview = overview;
@@ -45,6 +46,7 @@ public class ShowingDTO {
         this.start_day = start_day;
         this.end_day = end_day;
         this.showtime = showtime;
+        this.poster_path = poster_path;
     }
 
     public String getTitle() {
@@ -110,6 +112,12 @@ public class ShowingDTO {
     public void setShowtime(String showtime) {
         this.showtime = showtime;
     }
-    
-    
+
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
 }

@@ -50,3 +50,18 @@ CREATE TABLE wemovies.theater(
 insert into wemovies.theater (theater, t_time) values (4, '11:00');
 select * from wemovies.theater;
 drop table wemovies.theater;
+
+select * from wemovies.onscreen_movie;
+drop table wemovies.onscreen_movie;
+
+CREATE TABLE wemovies.onscreen_movie(
+	title varchar(50) not null,
+	genres varchar(50) not null,
+	overview varchar(500) not null,
+	cinema varchar(50) not null,
+	screen varchar(50) not null,
+	start_day varchar(50) not null,
+	end_day varchar(50) not null,
+	showtime varchar(50) not null,
+	poster_path varchar(200) not null
+)
