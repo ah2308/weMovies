@@ -8,6 +8,15 @@ public class BoardDTO {
 	String name;
 	String reg_date;
 	int readCount;
+	
+	public BoardDTO() {
+	    
+	}
+	public BoardDTO(String name, int seq, String content) {
+	    this.name = name;
+	    this.seq = seq;
+	    this.content = content;
+	}
 
 	public int getSeq() {
 		return seq;
@@ -56,4 +65,10 @@ public class BoardDTO {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
+    @Override
+    public String toString() {
+        return "BoardDTO [seq=" + seq + ", subject=" + subject + ", content=" + content + ", name=" + name
+                + ", reg_date=" + reg_date + ", readCount=" + readCount + "]";
+    }
+	
 }
