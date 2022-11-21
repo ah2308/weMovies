@@ -19,40 +19,18 @@
 		<div class="row">
 			<div class="col">
 				<form>
-				<select class="form-control" onchange="checkInfo()">
 				<c:forEach items="${list}" var="list">
-					<option value="${list.title}" id="title">${list.title}</option>
+					<img src="${list.poster_path}" style="object-fit: cover; height: 650px; width: 420px;">
+					<label class="form-control">${list.title}</label>
+					<label class="form-control">${list.overview}</label>
+					<label class="form-control">${list.cinema}</label>
+					<label class="form-control">${list.showtime}</label>
+					<label class="form-control">${list.screen}</label>
+					<label class="form-control">${list.genres}</label>
 				</c:forEach>
-				</select>
-				</form>
-			</div>
-			<div class="col">
-				<form>
-				<select class="form-control">
-				<c:forEach items="${info}" var="info">
-					<option value="${info.cinema}">${info.cinema}</option>
-				</c:forEach>
-				</select>
 				</form>
 			</div>
 		</div>
 	</div>
-	<script>
-		function checkInfo(){
-			var title = $('#title').val();
-			$.ajax({
-				url: 'ressub',
-				type: 'POST',
-				data: {title:title},
-				success:function() {
-					console.log("title값 가져오기 성공");
-					console.log(info.cinema);
-				},
-				error:function(){
-					console.log("title값 가져오기 실패");
-				}
-			});
-		}
-	</script>
 </body>
 </html>
