@@ -1,27 +1,21 @@
 package com.weMovies.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.weMovies.dto.BoardDTO;
 import com.weMovies.dto.MovieDTO;
@@ -42,7 +36,7 @@ public class BoardController {
     @Inject
     private BoardService boardService;
 
-    @RequestMapping(value = "/boardList", method = RequestMethod.GET)
+    @RequestMapping(value = "/boardList")
     public String list(Locale locale, Model model, MovieDTO movieDTO) throws Exception {
           List<MovieDTO> list = movieService.movieList(movieDTO);
           model.addAttribute("list", list);
@@ -82,14 +76,14 @@ public class BoardController {
         return "board/update";
     }
     
-    @ResponseBody
     @RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
-    public String boardUpdate(Locale locale, Model model, ServletRequest request, BoardDTO bdto) throws Exception {   
-        if(boardService.boardUpdate(bdto) == 1) {
-            System.out.println("업데이트");
-            return "/boardList";
-        }else {
-            return "N";
-        }
+    public String boardUpdate(Locale locale, Model model, ServletRequest request, HttpSession session) throws Exception {   
+        String name = (String) session.getAttribute("mid");
+        String content = request.getParameter("content");
+        int seq = Integer.parseInt(request.getParameter("seq"));
+        BoardDTO bdto = new BoardDTO(name, seq, content);
+        System.out.println("세션 이름 : " + name + " seq 번호 : " + seq + " content 내용 : " + content);
+        boardService.boardUpdate(bdto);
+        return "redirect:/board/boardList";
     }
 }

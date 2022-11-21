@@ -52,6 +52,6 @@
 		SET
 			content = #{content}
 		WHERE
-			name = #{name}
+			name = #{name} and seq = #{seq}
 	</update>
 </mapper>

@@ -108,7 +108,7 @@
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">한줄평 수정</h1>
 					</div>
-					<form id="form1">
+				<!-- 	<form id="form1"> -->
 						<label class="form-label"> 나의 한줄평</label>
 						<table>
 							<thead>
@@ -122,6 +122,7 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${list2}" var="list2">
+								<form action="boardUpdate" method="post">
 									<c:if test="${list2.name eq mid}">
 										<tr>
 											<td><input type="hidden" value="${list2.seq }"
@@ -131,16 +132,17 @@
 												name="content" id="content">&nbsp;</td>
 											<td>${list2.name}&nbsp;</td>
 											<td>"${list2.reg_date}"&nbsp;
-												<button type="button" onclick='fn_boardUpdate(${list2.seq})'>수정</button>
-												<button type="button" onclick='fn_boardDelete(${list2.seq})'>삭제</button>
+												<button type="submit">수정</button>
+												<button type="button">삭제</button>
 											</td>
 										</tr>
 									</c:if>
+								</form>
 								</c:forEach>
 							</tbody>
 						</table>
 						<!-- /.container-fluid -->
-					</form>
+			<!-- 		</form> -->
 				</div>
 				<!-- End of Main Content -->
 
@@ -187,6 +189,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 
 		<script>
 			function fn_boardUpdate() {
 				var seq = $("#seq").val();
@@ -216,6 +219,7 @@
 				});
 			}
 		</script>
+		 -->
 		<!-- Bootstrap core JavaScript-->
 		<script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
 		<script
