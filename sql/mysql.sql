@@ -64,14 +64,15 @@ drop table TABLENAME
 SET foreign_key_checks = 1;
 
 CREATE TABLE wemovies.onscreen_movie(
-	title varchar(50) not null,
-	genres varchar(50) not null,
-	overview varchar(500) not null,
-	cinema varchar(50) not null,
-	screen varchar(50) not null,
-	start_day varchar(50) not null,
-	end_day varchar(50) not null,
-	showtime varchar(50) not null,
-	poster_path varchar(200) not null
+	title varchar(30) not null,
+    	genres varchar(50) not null,
+    	overview varchar(3000) not null,
+    	cinema varchar(30) not null,
+   	screen varchar(30) not null,
+    	start_day date not null,
+    	end_day date not null,
+    	showtime varchar(30) not null,
+    	poster_path varchar(30),
+    	runtime varchar(30)
 )
 
