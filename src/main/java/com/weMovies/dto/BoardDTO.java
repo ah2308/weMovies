@@ -1,21 +1,26 @@
 package com.weMovies.dto;
 
 public class BoardDTO {
-    
+
 	int seq;
 	String subject;
 	String content;
 	String name;
 	String reg_date;
 	int readCount;
-	
+
 	public BoardDTO() {
-	    
+
 	}
+
 	public BoardDTO(String name, int seq, String content) {
-	    this.name = name;
-	    this.seq = seq;
-	    this.content = content;
+		this.name = name;
+		this.seq = seq;
+		this.content = content;
+	}
+
+	public BoardDTO(int seq) {
+		this.seq = seq;
 	}
 
 	public int getSeq() {
@@ -65,10 +70,11 @@ public class BoardDTO {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-    @Override
-    public String toString() {
-        return "BoardDTO [seq=" + seq + ", subject=" + subject + ", content=" + content + ", name=" + name
-                + ", reg_date=" + reg_date + ", readCount=" + readCount + "]";
-    }
-	
+
+	@Override
+	public String toString() {
+		return "BoardDTO [seq=" + seq + ", subject=" + subject + ", content=" + content + ", name=" + name
+				+ ", reg_date=" + reg_date + ", readCount=" + readCount + "]";
+	}
+
 }

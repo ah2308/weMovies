@@ -54,4 +54,9 @@
 		WHERE
 			name = #{name} and seq = #{seq}
 	</update>
+	<delete id="delete">
+		DELETE FROM wemovies.board
+		WHERE 
+			seq = #{seq}
+	</delete>
 </mapper>

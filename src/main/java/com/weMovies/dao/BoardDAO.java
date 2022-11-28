@@ -14,5 +14,5 @@ public interface BoardDAO {
 	public int regi(BoardDTO bdto);
 	public List<MovieDTO> boardRegi(int id) throws Exception;
 	public int boardUpdate(BoardDTO bdto) throws Exception;
-
+	public int boardDelete(int seq);
 }

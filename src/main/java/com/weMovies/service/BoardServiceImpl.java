@@ -46,4 +46,9 @@ public class BoardServiceImpl implements BoardService {
     public int boardUpdate(BoardDTO bdto) throws Exception {
         return boardDAO.boardUpdate(bdto);
     }
+
+	@Override
+	public int boardDelete(int seq) throws Exception {
+		return boardDAO.boardDelete(seq);
+	}
 }
