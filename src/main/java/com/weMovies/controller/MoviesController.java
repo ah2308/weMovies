@@ -54,14 +54,14 @@ public class MoviesController {
         String screen = request.getParameter("screen");
         String showtimes = request.getParameter("showtimes");
         String poster_path = request.getParameter("poster_path");
-        ShowingDTO sDTO = new ShowingDTO(title, genres, overview, cinema, screen, day[0], day[1], showtimes, poster_path);
+        String runtime = request.getParameter("runtime");
+        ShowingDTO sDTO = new ShowingDTO(title, genres, overview, cinema, screen, day[0], day[1], showtimes, poster_path, runtime);
         movieService.upload(sDTO);
         return "redirect:/movie/list";
     }
     @ResponseBody
     @RequestMapping("/timeCheck")
     public int timeCheck(@RequestParam("start_day") String start_day, @RequestParam("end_day") String end_day, @RequestParam("time") String time, @RequestParam("cinema") String cinema, @RequestParam("screen") String screen) throws Exception {
-        System.out.println(start_day + " ");
         ShowingDTO sdto = new ShowingDTO(start_day, end_day, time, cinema, screen);
         int cnt = movieService.timeCheck(sdto);
         return cnt;

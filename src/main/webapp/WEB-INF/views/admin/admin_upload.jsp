@@ -142,6 +142,7 @@
 							<div class="col-lg-6">
 								<form action="upload" method="post" name="form">
 									<input type="hidden" value="https://image.tmdb.org/t/p/original/${list.poster_path}" name="poster_path" id="poster_path">
+									<input type="hidden" value="${list.runtime}" name="runtime" id="runtime">
 									<div class="row mb-3">
 										<div class="col-lg">
 											<label class="form-label">영화 제목 : (TITLE)    |    상영시간: ${list.runtime}분</label> <input

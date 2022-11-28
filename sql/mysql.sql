@@ -72,6 +72,9 @@ CREATE TABLE wemovies.onscreen_movie(
 	start_day varchar(50) not null,
 	end_day varchar(50) not null,
 	showtime varchar(50) not null,
-	poster_path varchar(200) not null
+	poster_path varchar(200) not null,
+	runtime varchar(50)not null
 )
 
+select * from wemovies.onscreen_movie;
+drop table wemovies.onscreen_movie;
