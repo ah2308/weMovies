@@ -4,8 +4,8 @@
   
 <mapper namespace="show">
 	<insert id="upload">
-		INSERT INTO wemovies.onscreen_movie (title, genres, overview, cinema, screen, start_day, end_day, showtime, poster_path) 
-		values (#{title}, #{genres}, #{overview}, #{cinema}, #{screen}, #{start_day}, #{end_day}, #{showtime}, #{poster_path})
+		INSERT INTO wemovies.onscreen_movie (title, genres, overview, cinema, screen, start_day, end_day, showtime, poster_path, runtime) 
+		values (#{title}, #{genres}, #{overview}, #{cinema}, #{screen}, #{start_day}, #{end_day}, #{showtime}, #{poster_path}, #{runtime})
 	</insert>
 	<select id="timeCheck" resultType="int">
 		<![CDATA[

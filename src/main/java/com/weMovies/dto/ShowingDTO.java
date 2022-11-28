@@ -15,6 +15,7 @@ public class ShowingDTO {
     private String end_day;
     private String showtime;
     private String poster_path;
+    private String runtime;
     
     public ShowingDTO() {}
     
@@ -40,7 +41,7 @@ public class ShowingDTO {
         this.screen = screen;
     }
 
-    public ShowingDTO(String title, String genres, String overview, String cinema, String screen, String start_day, String end_day, String showtime, String poster_path) {
+    public ShowingDTO(String title, String genres, String overview, String cinema, String screen, String start_day, String end_day, String showtime, String poster_path, String runtime) {
         this.title = title;
         this.genres = genres;
         this.overview = overview;
@@ -50,6 +51,7 @@ public class ShowingDTO {
         this.end_day = end_day;
         this.showtime = showtime;
         this.poster_path = poster_path;
+        this.runtime = runtime;
     }
 
     public String getTitle() {
@@ -115,14 +117,7 @@ public class ShowingDTO {
     public void setShowtime(String showtime) {
         this.showtime = showtime;
     }
-
-    @Override
-    public String toString() {
-        return "ShowingDTO [title=" + title + ", genres=" + genres + ", overview=" + overview + ", cinema=" + cinema
-                + ", screen=" + screen + ", start_day=" + start_day + ", end_day=" + end_day + ", showtime=" + showtime
-                + "]";
-    }
-
+    
     public String getPoster_path() {
         return poster_path;
     }
@@ -131,4 +126,19 @@ public class ShowingDTO {
         this.poster_path = poster_path;
     }
 
+    public String getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
+    }
+
+    @Override
+    public String toString() {
+        return "ShowingDTO [title=" + title + ", genres=" + genres + ", overview=" + overview + ", cinema=" + cinema
+                + ", screen=" + screen + ", start_day=" + start_day + ", end_day=" + end_day + ", showtime=" + showtime
+                + ", poster_path=" + poster_path + ", runtime=" + runtime + "]";
+    }
+    
 }

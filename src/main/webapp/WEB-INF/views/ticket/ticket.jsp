@@ -20,12 +20,13 @@
 			<div class="col">
 				<c:forEach items="${list}" var="list">
 					<img src="${list.poster_path}" style="object-fit: cover; height: 650px; width: 420px;">
-					<label class="form-control">${list.title}</label>
-					<label class="form-control">${list.overview}</label>
-					<label class="form-control">${list.cinema}</label>
-					<label class="form-control">${list.showtime}</label>
-					<label class="form-control">${list.screen}</label>
-					<label class="form-control">${list.genres}</label>
+					<label class="form-control">${list.title}</label><p>
+					<label class="form-control">${list.overview}</label><p>
+					<label class="form-control">${list.cinema}</label><p>
+					<label class="form-control">${list.showtime}</label><p>
+					<label class="form-control">${list.screen}</label><p>
+					<label class="form-control">${list.genres}</label><p>
+					<label class="form-control">${list.runtime}</label>
 				</c:forEach>
 				</form>
 			</div>
