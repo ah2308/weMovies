@@ -108,20 +108,20 @@
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">한줄평 수정</h1>
 					</div>
-				<!-- 	<form id="form1"> -->
-						<label class="form-label"> 나의 한줄평</label>
-						<table>
-							<thead>
-								<tr>
-									<th>번호</th>
-									<th>제목</th>
-									<th>내용</th>
-									<th>작성자</th>
-									<th>날짜</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${list2}" var="list2">
+					<!-- 	<form id="form1"> -->
+					<label class="form-label"> 나의 한줄평</label>
+					<table>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>내용</th>
+								<th>작성자</th>
+								<th>날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${list2}" var="list2">
 								<form action="boardUpdate" method="post">
 									<c:if test="${list2.name eq mid}">
 										<tr>
@@ -132,17 +132,17 @@
 												name="content" id="content">&nbsp;</td>
 											<td>${list2.name}&nbsp;</td>
 											<td>"${list2.reg_date}"&nbsp;
-												<button type="submit">수정</button>
-												<button type="button">삭제</button>
+												<button type="submit">수정</button>			
+												<button type="button" onclick='fn_boardDelete(${list2.seq})'>삭제</button>
 											</td>
 										</tr>
 									</c:if>
 								</form>
-								</c:forEach>
-							</tbody>
-						</table>
-						<!-- /.container-fluid -->
-			<!-- 		</form> -->
+							</c:forEach>
+						</tbody>
+					</table>
+					<!-- /.container-fluid -->
+					<!-- 		</form> -->
 				</div>
 				<!-- End of Main Content -->
 
@@ -189,7 +189,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- 
+		<!-- 수정 부분
 		<script>
 			function fn_boardUpdate() {
 				var seq = $("#seq").val();
@@ -220,6 +220,21 @@
 			}
 		</script>
 		 -->
+		<script>
+			function fn_boardDelete(seq) {
+				$.ajax({
+					type : "POST",
+					url : "/board/boardDelete",
+					data : {
+						seq : seq
+					},
+					success : function(data) {
+							alert("글 삭제 완료되었습니다.");
+							location.href = "/board/boardList";
+					}
+				});
+			}
+		</script>
 		<!-- Bootstrap core JavaScript-->
 		<script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
 		<script

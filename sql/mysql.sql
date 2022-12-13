@@ -54,15 +54,6 @@ drop table wemovies.theater;
 select * from wemovies.onscreen_movie;
 drop table wemovies.onscreen_movie;
 
-<<<<<<< HEAD
-select * from information_schema.table_constraints where table_name = 'movie_detail';
-alter table movie_detail drop foreign key ibfk_1;
-delete table movie_detail;
-
-SET foreign_key_checks = 0;
-drop table TABLENAME
-SET foreign_key_checks = 1;
-
 CREATE TABLE wemovies.onscreen_movie(
 	title varchar(50) not null,
 	genres varchar(50) not null,
