@@ -11,26 +11,41 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Clean Blog - Start Bootstrap Theme</title>
+<link href="${path}/resources/css/sb-admin-2.min.css" rel="stylesheet">
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script>
+		$(document).on('change', '#movie', function(){
+			var option = $('#movie option:selected').val()
+			$.ajax({
+				type:'POST',
+				url:'resinfo',
+				data: 'option',
+				success: function(data){
+					console.log(option);
+					console.log("aaaaaa");
+				},
+				error: function(error){
+					console.log(error);
+				}
+			})
+		})
+	</script>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<c:forEach items="${list}" var="list">
-					<img src="${list.poster_path}" style="object-fit: cover; height: 650px; width: 420px;">
-					<label class="form-control">${list.title}</label><p>
-					<label class="form-control">${list.overview}</label><p>
-					<label class="form-control">${list.cinema}</label><p>
-					<label class="form-control">${list.showtime}</label><p>
-					<label class="form-control">${list.screen}</label><p>
-					<label class="form-control">${list.genres}</label><p>
-					<label class="form-control">${list.runtime}</label>
-				</c:forEach>
-				</form>
-			</div>
-		</div>
+	<div class="select">
+		<select id="movie">
+			<c:forEach items="${list}" var="list">
+				<option value="${list.title}">${list.title }</option>
+			</c:forEach>
+		</select>
+		
+		<p>----------------------------------------------
+		<select id="info">
+			<c:forEach items="${info}" var="info">
+				<option value="${info.screen}">${info.screen}</option>
+			</c:forEach>
+		</select>
 	</div>
 </body>
 </html>

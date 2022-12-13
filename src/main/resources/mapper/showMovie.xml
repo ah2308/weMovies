@@ -18,4 +18,7 @@
 	<select id="list" resultType="ShowingDTO">
 		SELECT * FROM wemovies.onscreen_movie
 	</select>
+	<select id="listInfo" resultType="ShowingDTO">
+		SELECT * FROM wemovies.onscreen_movie WHERE title = #{title}
+	</select>
 </mapper>

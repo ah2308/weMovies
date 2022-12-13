@@ -29,6 +29,15 @@ public class ReservationController {
         List<ShowingDTO> list = resService.showList(sdto);
         model.addAttribute("list", list);
         logger.info("티켓 예매 페이지로 이동");
-        return "/ticket/modal";
+        return "/ticket/ticket";
+    }
+    
+    @RequestMapping("/resinfo")
+    public String infotest(ShowingDTO sdto, Model model, HttpServletRequest request) throws Exception {
+        String title = request.getParameter("title");
+        System.out.println(title);
+        List<ShowingDTO> info = resService.listInfo(title);
+        model.addAttribute("info", info);
+        return "/ticket/ticket";
     }
 }
