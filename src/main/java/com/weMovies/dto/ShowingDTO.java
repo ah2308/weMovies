@@ -19,6 +19,10 @@ public class ShowingDTO {
     
     public ShowingDTO() {}
     
+    public ShowingDTO(String title) {
+        this.title = title;
+    }
+    
     public ShowingDTO(String title, String showtime) {
         this.title = title;
         this.showtime = showtime;
