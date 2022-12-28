@@ -27,6 +27,26 @@
 <link href="${path}/resources/css/styles.css" rel="stylesheet" />
 <script src="https://kit.fontawesome.com/3400d00a45.js"
 	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$.ajax({
+		type: "GET",
+		url: "/load_index",
+		dataType: "JSON",
+		success: function(data){
+			$.each(data, function(){
+				$('#img').append("<img src='" + this.poster_path + "' class='card-img-top'>");
+				$('#card-body').append("<h5 class='card-title'>" + this.title + "</h5>");
+			});
+		},
+		error: function(){
+			alert("값이 안넘어왔다!");
+		}
+	});
+});
+</script>
 </head>
 <body>
 	<!-- Navigation-->
@@ -115,61 +135,9 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="row row-cols-1 row-cols-md-3 g-4">
-					<div class="col">
-						<div class="card h-100 text-center">
-							<img src="${path}/resources/assets/img/movie_card_img"
-								class="card-img-top">
-							<div class="card-body">
-								<h5 class="card-title">영화 제목</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100" style="width: 100%">
-							<img src="${path}/resources/assets/img/movie_card_img"
-								class="card-img-top">
-							<div class="card-body">
-								<h5 class="card-title">영화 제목</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<img src="${path}/resources/assets/img/movie_card_img"
-								class="card-img-top">
-							<div class="card-body">
-								<h5 class="card-title">영화 제목</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="row row-cols-1 row-cols-md-3 g-4">
-					<div class="col">
-						<div class="card h-100">
-							<img src="${path}/resources/assets/img/movie_card_img"
-								class="card-img-top">
-							<div class="card-body">
-								<h5 class="card-title">영화 제목</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100" style="width: 100%">
-							<img src="${path}/resources/assets/img/movie_card_img"
-								class="card-img-top">
-							<div class="card-body">
-								<h5 class="card-title">영화 제목</h5>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<img src="${path}/resources/assets/img/movie_card_img"
-								class="card-img-top">
-							<div class="card-body">
-								<h5 class="card-title">영화 제목</h5>
+					<div class="col" id="col">
+						<div class="card h-100 text-center" id="img">
+							<div class="card-body" id="card-body">
 							</div>
 						</div>
 					</div>

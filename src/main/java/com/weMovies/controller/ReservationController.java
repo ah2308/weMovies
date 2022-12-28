@@ -24,14 +24,6 @@ public class ReservationController {
     @Inject 
     private ReservationService resService;
 
-    @RequestMapping(value="/res", method = RequestMethod.GET)
-    public String ticketView(ShowingDTO sdto, Model model, HttpServletRequest request, @RequestParam Map<String, Object> param) throws Exception {
-        List<ShowingDTO> list = resService.showList(sdto);
-        model.addAttribute("list", list);
-        logger.info("티켓 예매 페이지로 이동");
-        return "/ticket/ticket";
-    }
-    
     @RequestMapping("/resinfo")
     public String infotest(ShowingDTO sdto, Model model, HttpServletRequest request) throws Exception {
         String title = request.getParameter("title");
