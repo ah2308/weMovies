@@ -1,12 +1,12 @@
 package com.weMovies.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.weMovies.dto.MemberDTO;
+import com.weMovies.dto.ShowingDTO;
 import com.weMovies.service.MemberService;
+import com.weMovies.service.ReservationService;
 
 @Controller
 public class MemberController {
@@ -25,11 +26,16 @@ public class MemberController {
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
     @Inject
     private MemberService service;
+    @Inject 
+    private ReservationService resService;
 
     // 메인화면으로 보내줄 맵핑
-    @RequestMapping("index")
-    public String menu() {
-        return "index";
+    @ResponseBody
+    @RequestMapping("/load_index")
+    public List<ShowingDTO> ticketView(ShowingDTO sdto, Model model) throws Exception {
+        List<ShowingDTO> list = resService.showList(sdto);
+        model.addAttribute("list", list);
+        return list;
     }
 
     // 로그인 버튼을 누르면 폼 화면으로 이동시켜주는 역할
