@@ -30,6 +30,11 @@ public class MemberController {
     private ReservationService resService;
 
     // 메인화면으로 보내줄 맵핑
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
+    
     @ResponseBody
     @RequestMapping("/load_index")
     public List<ShowingDTO> ticketView(ShowingDTO sdto, Model model) throws Exception {

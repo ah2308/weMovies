@@ -36,9 +36,16 @@ $(document).ready(function(){
 		url: "/load_index",
 		dataType: "JSON",
 		success: function(data){
+			let Cardzone = $('#col');
+			Cardzone.empty();
 			$.each(data, function(){
-				$('#img').append("<img src='" + this.poster_path + "' class='card-img-top'>");
-				$('#card-body').append("<h5 class='card-title'>" + this.title + "</h5>");
+				let card = '<div class="col col-md-2">'
+				card += '<div class="card h-100 text-center">';
+				card += '<img src="' + this.poster_path + '" class="card-img-top" style="height: 15rem; object-fit: cover;">'
+				card += '<div class="card-body">'
+				card += '<h6 class="card-title">' + this.title + '</h6>'
+				card += '</div></div>'
+				Cardzone.append(card);
 			});
 		},
 		error: function(){
@@ -133,14 +140,8 @@ $(document).ready(function(){
 			<a href="#">더 많은 영화보기<i class="fa-solid fa-circle-plus"></i></a></li>
 		</ul>
 		<div class="row">
-			<div class="col-md-6">
-				<div class="row row-cols-1 row-cols-md-3 g-4">
-					<div class="col" id="col">
-						<div class="card h-100 text-center" id="img">
-							<div class="card-body" id="card-body">
-							</div>
-						</div>
-					</div>
+			<div class="col-md">
+				<div class="row row-cols-1 g-4" id="col">
 				</div>
 			</div>
 		</div>
