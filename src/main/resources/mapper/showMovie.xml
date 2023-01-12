@@ -17,6 +17,8 @@
 	</select>
 	<select id="list" resultType="ShowingDTO">
 		SELECT * FROM wemovies.onscreen_movie
+		group by title, poster_path
+		order by title
 	</select>
 	<select id="listInfo" resultType="ShowingDTO">
 		SELECT * FROM wemovies.onscreen_movie WHERE title = #{title}
