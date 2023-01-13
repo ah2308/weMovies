@@ -43,8 +43,10 @@ $(document).ready(function(){
 				card += '<div class="card h-100 text-center">';
 				card += '<img src="' + this.poster_path + '" class="card-img-top" style="height: 15rem; object-fit: cover;">'
 				card += '<div class="card-body">'
-				card += '<h6 class="card-title">' + this.title + '</h6>'
-				card += '</div></div>'
+				card += '<h6 class="card-title mb-0 pb-0">' + this.title + '</h6>'
+				card += '</div>'
+				card += '<form action="/ticket/resinfo" method="GET">'
+				card += '<button type="submit" class="btn btn-danger text-white text-center" name="title" value="'+this.title+'" style="width: 100%;">예매하기</input></form></div>'
 				Cardzone.append(card);
 			});
 		},

@@ -21,6 +21,8 @@
 		order by title
 	</select>
 	<select id="listInfo" resultType="ShowingDTO">
-		SELECT * FROM wemovies.onscreen_movie WHERE title = #{title}
+		SELECT * FROM wemovies.onscreen_movie
+		WHERE title = #{title}
+		GROUP BY screen, title
 	</select>
 </mapper>
