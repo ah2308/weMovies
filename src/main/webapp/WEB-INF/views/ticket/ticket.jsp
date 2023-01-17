@@ -16,9 +16,20 @@
 	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 </head>
 <body>
-	<div><%= request.getAttribute("title") %></div>
-	<c:forEach items="${info}" var="info">
-		<div>${info.screen}</div>
-	</c:forEach>
+	<div><%= request.getAttribute("title")%></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-8 text-white" style="background-color: grey;">
+				col section
+				<c:forEach items="${info}" var="info">
+					<button class="btn btn-info" type="button" value="${info.screen}">$(info.screen)</button>
+				</c:forEach>
+				</div>
+			</div>
+			<div class="col-4 text-white" style="background-color: orange;">
+				col-4 section
+			</div>
+		</div>
+	</div>
 </body>
 </html>
