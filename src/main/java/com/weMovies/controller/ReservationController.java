@@ -30,6 +30,7 @@ public class ReservationController {
         System.out.println(title);
         List<ShowingDTO> info = resService.listInfo(title);
         model.addAttribute("info", info);
+        model.addAttribute("title", title);
         return "/ticket/ticket";
     }
 }

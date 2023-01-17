@@ -14,38 +14,22 @@
 <link href="${path}/resources/css/sb-admin-2.min.css" rel="stylesheet">
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script>
-		$(document).on('change', '#movie', function(){
-			var option = $('#movie option:selected').val()
-			$.ajax({
-				type:'POST',
-				url:'resinfo',
-				data: 'option',
-				success: function(data){
-					console.log(option);
-					console.log("aaaaaa");
-				},
-				error: function(error){
-					console.log(error);
-				}
-			})
-		})
-	</script>
 </head>
 <body>
-	<div class="select">
-		<select id="movie">
-			<c:forEach items="${list}" var="list">
-				<option value="${list.title}">${list.title }</option>
-			</c:forEach>
-		</select>
-		
-		<p>----------------------------------------------
-		<select id="info">
-			<c:forEach items="${info}" var="info">
-				<option value="${info.screen}">${info.screen}</option>
-			</c:forEach>
-		</select>
+	<div><%= request.getAttribute("title")%></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-8 text-white" style="background-color: grey;">
+				col section
+				<c:forEach items="${info}" var="info">
+					<button class="btn btn-info" type="button" value="${info.screen}">$(info.screen)</button>
+				</c:forEach>
+				</div>
+			</div>
+			<div class="col-4 text-white" style="background-color: orange;">
+				col-4 section
+			</div>
+		</div>
 	</div>
 </body>
 </html>
