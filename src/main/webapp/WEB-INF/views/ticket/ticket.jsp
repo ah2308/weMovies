@@ -16,19 +16,31 @@
 	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 </head>
 <body>
-	<div><%= request.getAttribute("title")%></div>
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-8 text-white" style="background-color: grey;">
-				col section
-				<c:forEach items="${info}" var="info">
-					<button class="btn btn-info" type="button" value="${info.screen}">$(info.screen)</button>
-				</c:forEach>
+		<div class="row justify-content-start">
+		<c:forEach items="${info}" var="info">
+			<div class="col-lg-4">
+				<img src="https://image.tmdb.org/t/p/original/${info.poster_path}" style="object-fit: cover; height: 650px; width: 420px;">
+			</div>
+			<div class="col-lg-6">
+				<div class="row mb-3">
+					<div class="col-lg">
+						<label class="form-label"><%= request.getAttribute("title")%></label>
+					</div>
+				</div>
+				<div class="mb-3">
+					<div class="col-lg">
+						<label class="form-label">${info.cinema}</label>
+					</div>
+					<div class="col-lg">
+						<label class="form-label">${info.screen}</label>
+					</div>
+					<div class="col-lg">
+						<label class="form-label">${info.runtime}</label>
+					</div>
 				</div>
 			</div>
-			<div class="col-4 text-white" style="background-color: orange;">
-				col-4 section
-			</div>
+		</c:forEach>
 		</div>
 	</div>
 </body>
